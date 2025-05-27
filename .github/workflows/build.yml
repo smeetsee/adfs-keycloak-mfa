@@ -16,6 +16,10 @@ jobs:
 
       # Removed the Setup .NET step since .NET Framework 4.8 is pre-installed on Windows runners
 
+      # Setup MSBuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
       - name: Restore packages
         run: msbuild AdfsToKeycloakAdapter.sln /t:Restore
 
