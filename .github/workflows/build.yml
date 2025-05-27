@@ -14,10 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '4.8.x'
+      # Removed the Setup .NET step since .NET Framework 4.8 is pre-installed on Windows runners
 
       - name: Restore packages
         run: msbuild AdfsToKeycloakAdapter.sln /t:Restore
@@ -31,6 +28,7 @@ jobs:
           name: AdfsToKeycloakAdapter
           path: |
             src/AdfsToKeycloakAdapter/bin/Release/*.dll
+
   release:
     needs: build
     runs-on: ubuntu-latest
